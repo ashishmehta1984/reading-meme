@@ -16,7 +16,7 @@ jobs:
       - persist_to_workspace:
           root: my_workspace
           paths:
-            - echo_output
+            - echo-output
   two:
     docker:
       - image: circleci/ruby:2.4.1
