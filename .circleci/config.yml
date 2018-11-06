@@ -1,8 +1,28 @@
 version: 2
 jobs:
-  build:
+  one:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: echo "Hello Circle"
+      - run: echo "First Job Running"
+      - run: ls -l
+      - run: echo "Sleeping for 25 seconds"
+      - run: sleep 25
+      - run: echo "Napping time over"
+  two:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "Running Second Job"
+      - run: ls -l
+      - run: echo "Sleeping for 25 seconds"
+      - run: sleep 25
+      - run: echo "Napping time over"
+workflows:
+  version: 2
+  one_and_two:
+    jobs:
+      - one
+      - two
